@@ -46,7 +46,7 @@ Configure the MySQL database and update JDBC connection details in DBConnection.
 
 Deploy the project on Apache Tomcat or any J2EE server.
 
-Access the application at http://localhost:8080/<project-name>
+Access the application at http://localhost:9090/J2EE3/
 
 Future Enhancements
 
