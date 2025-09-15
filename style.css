@@ -1,0 +1,200 @@
+/* -------------------------
+   Soft / pastel auth theme
+   ------------------------- */
+
+/* Reset & base font */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html,body { height: 100%; }
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.35;
+  color: #243142; /* main text color (dark slate) */
+  background: linear-gradient(180deg, #f8fbfd 0%, #f4f7fb 100%); /* very soft gradient */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle decorative, low-saturation shapes (not thick) */
+body::before {
+  content: "";
+  position: absolute;
+  left: -120px;
+  top: -100px;
+  width: 520px;
+  height: 520px;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 25% 25%, rgba(253, 219, 230, 0.22), transparent 20%),
+    radial-gradient(circle at 75% 75%, rgba(185, 230, 255, 0.18), transparent 22%);
+  filter: blur(36px);
+  z-index: 0;
+}
+
+/* Page heading + container layout
+   your HTML has <h2>, <form>, <p> directly under body, so we style them as a central column */
+body > h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #1f2a37;
+  z-index: 1;
+  text-align: center;
+  letter-spacing: -0.2px;
+}
+
+/* Card (the form acts as the card) */
+form {
+  background: rgba(255,255,255,0.86); /* slightly translucent for soft frosted look */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(31,40,50,0.06);
+  width: 100%;
+  max-width: 420px;
+  padding: 26px;
+  z-index: 1;
+  border: 1px solid rgba(36,49,66,0.04);
+  transition: transform .22s ease, box-shadow .22s ease;
+}
+
+/* Slight lift on hover for desktop */
+@media (hover: hover) {
+  form:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(31,40,50,0.08); }
+}
+
+/* spacing of form fields */
+form > div {
+  margin-bottom: 14px;
+}
+
+/* Labels */
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #34414e;
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #e6eef6;
+  background: #ffffff;
+  font-size: 14px;
+  color: #102028;
+  transition: border-color .18s ease, box-shadow .18s ease;
+  outline: none;
+  -webkit-appearance: none;
+}
+
+/* Focus / accessible outline */
+input:focus, textarea:focus {
+  border-color: rgba(123, 192, 247, 0.9); /* soft blue */
+  box-shadow: 0 8px 24px rgba(123,192,247,0.10);
+}
+
+/* Placeholder color */
+::placeholder { color: #98a3b1; }
+
+/* Primary button */
+button, input[type="submit"] {
+  display: inline-block;
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  background: linear-gradient(120deg, #7bc0f7 0%, #bfeede 100%); /* soft gradient */
+  color: #043047; /* dark text for contrast on pastel gradient */
+  box-shadow: 0 8px 20px rgba(123,192,247,0.12);
+  transition: transform .12s ease, box-shadow .18s ease, opacity .12s ease;
+}
+
+/* hover / active */
+@media (hover: hover) {
+  button:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(123,192,247,0.14); }
+}
+button:active { transform: translateY(-1px); }
+
+/* subtle link / paragraph under form */
+body > p {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #415463;
+  z-index: 1;
+}
+body > p a {
+  color: #7bc0f7;
+  font-weight: 700;
+  text-decoration: none;
+}
+body > p a:hover { text-decoration: underline; }
+
+/* Small helper text under inputs */
+.form-text {
+  display: block;
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* Error / alert style */
+.error {
+  background: rgba(255, 82, 82, 0.06);
+  color: #b71c1c;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(183,28,28,0.06);
+}
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  body { padding: 20px; }
+  form { padding: 20px; border-radius: 12px; }
+  body > h2 { font-size: 20px; margin-bottom: 10px; }
+}
+
+/* Optional small visual polish for inputs (icons/buttons inside input)
+   If you later add a show/hide toggle button, these helpers help */
+.input-with-toggle { position: relative; }
+.input-with-toggle .toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  padding: 6px 8px;
+  font-weight: 700;
+  color: #5a6a75;
+  cursor: pointer;
+}
+
+/* Tiny accessibility improvement: show visible outline when keyboard-navigating */
+:focus-visible {
+  outline: 3px solid rgba(123,192,247,0.18);
+  outline-offset: 3px;
+}
+
+/* Small utility */
+.center { text-align: center; }
+.small { font-size: 13px; color: #6b7280; }
